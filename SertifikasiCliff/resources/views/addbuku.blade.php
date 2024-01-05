@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered" style="">
         <div class="modal-content">
             <div class="modal-header d-flex align-items-center justify-content-center">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Buku
                 </h5>
             </div>
             <form action="/addbuku" method="post" enctype="multipart/form-data">

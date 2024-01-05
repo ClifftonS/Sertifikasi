@@ -4,14 +4,14 @@
             <svg class="bi me-2" width="16" height="16">
                 <use xlink:href="#home" />
             </svg>
-            <span class="fs-4">Sidebar</span>
+            <span class="fs-4">Perpustakaan</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column Fmb-auto">
             <li class="nav-item mb-1">
-                <a href="/" class="nav-link {{ Request::is('/') || Request::is('formadd') ? 'active' : '' }}"
+                <a href="/peminjaman" class="nav-link {{ Request::is('peminjaman') ? 'active' : '' }}"
                     aria-current="page">
-                    <div class="ms-4 textnav">Home</div>
+                    <div class="ms-4 textnav">Peminjaman</div>
                 </a>
             </li>
             <li class="mb-1">

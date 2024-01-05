@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered" style="">
         <div class="modal-content">
             <div class="modal-header d-flex align-items-center justify-content-center">
-                <h5 class="modal-title" id="exampleModalLabel">Edit
+                <h5 class="modal-title" id="exampleModalLabel">Edit Buku
                 </h5>
             </div>
             <form action="/editbuku" method="post" enctype="multipart/form-data">

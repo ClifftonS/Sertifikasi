@@ -30,28 +30,35 @@
                 <div class="col-10 my-3 offset-1">
                     <div class="ms-auto d-flex justify-content-end">
                         <a class="btn btn-primary mb-3" role="button" data-bs-toggle="modal"
-                            data-bs-target="#Tambahanggota" data-bs-placement="top" style="display: flex">Tambah</a>
+                            data-bs-target="#Tambahpmnj" data-bs-placement="top" style="display: flex">Tambah</a>
                     </div>
                     <table class="table table-hover table-bordered text-center table-striped align-middle">
-                        <thead class="table-dark">
+                        <thead class="table-dark align-middle">
                             <tr>
-                                <th class="col-2" scope="col">Nama</th>
-                                <th class="col-2" scope="col">No Telp</th>
+                                <th class="col-2" scope="col">Judul</th>
+                                <th class="col-2" scope="col">Nama Peminjam</th>
+                                <th class="col-2" scope="col">Tanggal Peminjaman</th>
+                                <th class="col-2" scope="col">Tanggal Harus Kembali</th>
+                                <th class="col-2" scope="col">Status</th>
                                 <th class="col-2" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $datatable)
                                 <tr>
+                                    <td>{{ $datatable->judul }}</td>
                                     <td>{{ $datatable->nama }}</td>
-                                    <td>{{ $datatable->no_telp }}</td>
-                                    <td><a data-bs-toggle="modal" data-bs-target="#Editanggota"
-                                            data-id='{"idagt":"{{ $datatable->id_agt }}","nama":"{{ $datatable->nama }}","notelp":"{{ $datatable->no_telp }}"}'
+                                    <td>{{ date('d-m-Y', strtotime($datatable->tgl_pmnj)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($datatable->tgl_kembali)) }}</td>
+                                    <td>{{ $datatable->status_pmnj == 0 ? 'Masih Dipinjam' : 'Telah Dikembalikan' }}
+                                    </td>
+                                    <td><a data-bs-toggle="modal" data-bs-target="#Editpeminjaman"
+                                            data-id='{"idpmnj":"{{ $datatable->id_pmnj }}","tglpmnj":"{{ $datatable->tgl_pmnj }}","status":"{{ $datatable->status_pmnj }}","idbuku":"{{ $datatable->id_buku }}","idagt":"{{ $datatable->id_agt }}"}'
                                             class="edit text-decoration-none"><i
                                                 class="icon fa-solid fa-pen-to-square"></i></a>
                                         |
-                                        <a data-bs-toggle="modal" data-bs-target="#Deleteanggota"
-                                            data-id='{"idagt":"{{ $datatable->id_agt }}"}'
+                                        <a data-bs-toggle="modal" data-bs-target="#Deletepeminjaman"
+                                            data-id='{"idpmnj":"{{ $datatable->id_pmnj }}"}'
                                             class="delete text-decoration-none"><i
                                                 class="icon fa-solid fa-trash-can"></i></a>
                                     </td>
@@ -62,9 +69,9 @@
                 </div>
             </div>
         </div>
-        @include('addanggota')
-        @include('editanggota')
-        @include('deleteanggota')
+        @include('addpeminjaman')
+        @include('editpeminjaman')
+        @include('deletepeminjaman')
     </div>
 
     {{-- Bootstrap --}}
