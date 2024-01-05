@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AwalController;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\AnggotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+     return redirect('/buku');
+ });
+Route::get('/buku', [BukuController::class, 'get']);
+Route::get('/anggota', [AnggotaController::class, 'get']);
+Route::post('/addbuku', [BukuController::class, 'add']);
+Route::post('/deletebuku', [BukuController::class, 'delete']);
+Route::post('/editbuku', [BukuController::class, 'edit']);
