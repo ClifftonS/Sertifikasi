@@ -62,9 +62,9 @@
                 </div>
             </div>
         </div>
-        @include('addanggota')
-        @include('editanggota')
-        @include('deleteanggota')
+        @include('anggota.addanggota')
+        @include('anggota.editanggota')
+        @include('anggota.deleteanggota')
     </div>
 
     {{-- Bootstrap --}}

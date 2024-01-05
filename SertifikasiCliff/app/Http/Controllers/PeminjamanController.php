@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 class PeminjamanController extends Controller
 {
     public function get() {
-        $data = DB::table('peminjaman')->join('anggota', 'anggota.id_agt','=', 'peminjaman.id_agt')->join('buku', 'buku.id_buku','=', 'peminjaman.id_buku')->where('delete_pmnj', 0)->orderBy('status_pmnj', 'desc')->get();
+        $data = DB::table('peminjaman')->join('anggota', 'anggota.id_agt','=', 'peminjaman.id_agt')->join('buku', 'buku.id_buku','=', 'peminjaman.id_buku')->where('delete_pmnj', 0)->orderBy('status_pmnj', 'asc')->orderBy('tgl_pmnj', 'desc')->get();
         $data2 = DB::table('anggota')->where('delete_agt', 0)->get();
         $data3 = DB::table('buku')->where('delete_buku', 0)->get();
-        return view('peminjaman',['data' => $data, 'anggota' => $data2, 'buku' => $data3]);
+        return view('peminjaman.peminjaman',['data' => $data, 'anggota' => $data2, 'buku' => $data3]);
     }
     public function add(Request $request) {
         $tglkmbl = date('Y-m-d', strtotime($request->tglpmnj . ' +7 days'));

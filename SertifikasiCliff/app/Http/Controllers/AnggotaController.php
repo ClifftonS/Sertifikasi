@@ -8,7 +8,7 @@ class AnggotaController extends Controller
 {
     public function get() {
         $data = DB::table('anggota')->where('delete_agt', 0)->get();
-        return view('anggota',['data' => $data]);
+        return view('anggota.anggota',['data' => $data]);
     }
     public function add(Request $request) {
         DB::select('CALL InsertAnggota("' . $request->nama . '", "' . $request->notelp . '")');

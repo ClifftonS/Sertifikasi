@@ -9,7 +9,7 @@ class BukuController extends Controller
 {
     public function get() {
         $data = DB::table('buku')->where('delete_buku', 0)->get();
-        return view('buku',['data' => $data]);
+        return view('buku.buku',['data' => $data]);
     }
     public function add(Request $request) {
         $file=$request->image;
