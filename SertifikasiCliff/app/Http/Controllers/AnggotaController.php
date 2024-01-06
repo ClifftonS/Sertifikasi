@@ -11,8 +11,13 @@ class AnggotaController extends Controller
         return view('anggota.anggota',['data' => $data]);
     }
     public function add(Request $request) {
-        DB::select('CALL InsertAnggota("' . $request->nama . '", "' . $request->notelp . '")');
-        return redirect('/anggota')->with('message', 'Data Sudah Terubah!');
+        $data = DB::table('anggota')->where('nama', $request->nama)->get();
+        if(count($data) == 0){
+            DB::select('CALL InsertAnggota("' . $request->nama . '", "' . $request->notelp . '")');
+            return redirect('/anggota')->with('message', 'Data Sudah Terubah!');
+        } else{
+            return redirect('/anggota')->with('message', 'Data Sudah Ada!');
+        }
     }
     public function delete(Request $request) {
         DB::select('CALL DeleteAnggota("' . $request->idDelete . '")');

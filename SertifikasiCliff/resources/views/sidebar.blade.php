@@ -9,6 +9,11 @@
         <hr>
         <ul class="nav nav-pills flex-column Fmb-auto">
             <li class="nav-item mb-1">
+                <a href="/katalog" class="nav-link {{ Request::is('katalog') ? 'active' : '' }}" aria-current="page">
+                    <div class="ms-4 textnav">Katalog</div>
+                </a>
+            </li>
+            <li class="mb-1">
                 <a href="/peminjaman" class="nav-link {{ Request::is('peminjaman') ? 'active' : '' }}"
                     aria-current="page">
                     <div class="ms-4 textnav">Peminjaman</div>

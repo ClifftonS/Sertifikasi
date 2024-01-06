@@ -18,8 +18,9 @@ use App\Http\Controllers\PeminjamanController;
 */
 
 Route::get('/', function () {
-     return redirect('/peminjaman');
+     return redirect('/katalog');
  });
+ Route::get('/katalog', [AwalController::class, 'get']);
 Route::get('/buku', [BukuController::class, 'get']);
 Route::get('/peminjaman', [PeminjamanController::class, 'get']);
 Route::get('/anggota', [AnggotaController::class, 'get']);
@@ -35,3 +36,4 @@ Route::post('/editbuku', [BukuController::class, 'edit']);
 Route::get('/ajaxbuku', [BukuController::class, 'ajax']);
 Route::get('/ajaxagt', [AnggotaController::class, 'ajax']);
 Route::get('/ajaxpmnj', [PeminjamanController::class, 'ajax']);
+Route::get('/ajaxkatalog', [AwalController::class, 'ajax']);

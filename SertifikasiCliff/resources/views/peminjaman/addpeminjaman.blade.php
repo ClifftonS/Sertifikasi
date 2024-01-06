@@ -18,7 +18,6 @@
                                 @if (count($anggota) == 0)
                                     <option>Tidak ada mahasiswa</option>
                                 @endif
-                                <option></option>
                                 @foreach ($anggota as $agt)
                                     <option value="{{ $agt->id_agt }}">{{ $agt->nama }}</option>
                                 @endforeach
@@ -36,7 +35,6 @@
                                 @if (count($buku) == 0)
                                     <option>Tidak ada mahasiswa</option>
                                 @endif
-                                <option></option>
                                 @foreach ($buku as $judulbuku)
                                     <option value="{{ $judulbuku->id_buku }}">{{ $judulbuku->judul }}</option>
                                 @endforeach

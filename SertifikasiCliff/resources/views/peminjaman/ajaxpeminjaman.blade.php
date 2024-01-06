@@ -9,7 +9,7 @@
             <th class="col-2" scope="col">Action</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="overflow-scroll" style="max-height: 100px">
         @foreach ($datasend as $datatable)
             <tr>
                 <td>{{ $datatable->judul }}</td>

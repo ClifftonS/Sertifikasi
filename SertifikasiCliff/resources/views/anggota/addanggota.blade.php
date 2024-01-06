@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-7">
                             <input type="text" name="nama" id="nama" class="form-control"
-                                style="background-color: #F4F9FF; border-radius: 10px;" placeholder="Masukkan Judul"
+                                style="background-color: #F4F9FF; border-radius: 10px;" placeholder="Masukkan Nama"
                                 required>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-7">
                             <input type="text" name="notelp" id="notelp" maxlength = "15" class="form-control"
-                                style="background-color: #F4F9FF; border-radius: 10px;" placeholder="Masukkan Penulis"
+                                style="background-color: #F4F9FF; border-radius: 10px;" placeholder="Masukkan NoTelp"
                                 required>
                         </div>
                     </div>

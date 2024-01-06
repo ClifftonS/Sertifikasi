@@ -12,16 +12,22 @@ class BukuController extends Controller
         return view('buku.buku',['data' => $data]);
     }
     public function add(Request $request) {
-        $file=$request->image;
-        if ($file != null){
-            $filename = time() .'.'.$file->getClientOriginalName();
-            $request->image->move('assets/', $filename);
+        $data = DB::table('buku')->where('judul', $request->judul)->get();
+        if(count($data) == 0){
+            $file=$request->image;
+            if ($file != null){
+                $filename = time() .'.'.$file->getClientOriginalName();
+                $request->image->move('assets/', $filename);
+            }
+            else{
+                $filename = null;
+            }
+            DB::select('CALL InsertBuku("' . $request->judul . '", "' . $request->penulis . '", "' . $request->terbit . '", "'.$request->jumlah.'", "' . $filename . '")');
+            return redirect('/buku')->with('message', 'Data Sudah Terubah!');
+        }else{
+            return redirect('/buku')->with('message', 'Data Sudah Ada!');
         }
-        else{
-            $filename = null;
-        }
-        DB::select('CALL InsertBuku("' . $request->judul . '", "' . $request->penulis . '", "' . $request->terbit . '", "'.$request->jumlah.'", "' . $filename . '")');
-        return redirect('/buku')->with('message', 'Data Sudah Terubah!');
+
     }
     public function delete(Request $request) {
         DB::select('CALL DeleteBuku("' . $request->idDelete . '")');

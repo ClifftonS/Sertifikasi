@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Perpustakaan</title>
 
     <link rel="stylesheet" href="{{ URL::asset('css\style.css') }}">
     {{-- SweetAlert --}}
@@ -43,7 +43,43 @@
                                 data-bs-target="#Tambahpmnj" data-bs-placement="top" style="display: flex">Tambah</a>
                         </div>
                     </div>
-                    <div class="search d-flex justify-content-center" id="search"></div>
+                    <div class="" style="height:320px">
+                        <div class="search d-flex justify-content-center  mh-100 overflow-scroll" id="search"></div>
+                    </div>
+                    <p class="fw-bold mt-4">Peminjaman Lewat Tanggal</p>
+                    <div class="" style="height:250px">
+                        <div class="d-flex justify-content-center  mh-100 overflow-scroll">
+                            @if (count($datalewat) != 0)
+                                <table class="table table-hover table-bordered text-center table-striped align-middle">
+                                    <thead class="table-dark align-middle">
+                                        <tr>
+                                            <th class="col-2" scope="col">Judul</th>
+                                            <th class="col-2" scope="col">Nama Peminjam</th>
+                                            <th class="col-2" scope="col">Tanggal Peminjaman</th>
+                                            <th class="col-2" scope="col">Tanggal Harus Kembali</th>
+                                            <th class="col-2" scope="col">Status</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="overflow-auto" style="max-height: 100px">
+                                        @foreach ($datalewat as $datatable)
+                                            <tr>
+                                                <td>{{ $datatable->judul }}</td>
+                                                <td>{{ $datatable->nama }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($datatable->tgl_pmnj)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($datatable->tgl_kembali)) }}</td>
+                                                <td>{{ $datatable->status_pmnj == 0 ? 'Masih Dipinjam' : 'Telah Dikembalikan' }}
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                        </div>
+                    @else
+                        <p>Tidak ada</p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
