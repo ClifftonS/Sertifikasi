@@ -12,14 +12,30 @@ class AnggotaController extends Controller
     }
     public function add(Request $request) {
         DB::select('CALL InsertAnggota("' . $request->nama . '", "' . $request->notelp . '")');
-        return redirect('/anggota');
+        return redirect('/anggota')->with('message', 'Data Sudah Terubah!');
     }
     public function delete(Request $request) {
         DB::select('CALL DeleteAnggota("' . $request->idDelete . '")');
-        return redirect('/anggota');
+        return redirect('/anggota')->with('message', 'Data Sudah Terubah!');
     }
     public function edit(Request $request) {
         DB::select('CALL EditAnggota("' . $request->idagt . '", "' . $request->nama . '", "' . $request->notelp . '")');
-        return redirect('/anggota');
+        return redirect('/anggota')->with('message', 'Data Sudah Terubah!');
+    }
+    public function ajax(Request $request) {
+        $name = $request->name;
+        $results =  DB::table('anggota')->where('delete_agt', 0)->where(function($query) use ($name) {
+            $query->where('id_agt', 'LIKE', '%' . $name . '%')
+                  ->orWhere('nama', 'LIKE', '%' . $name . '%')
+                  ->orWhere('no_telp', 'LIKE', '%' . $name . '%');
+        })->get();
+        $c = count($results);
+        if($c == 0){
+            return "<p>data tidak ada</p>";
+        }else{
+            return view('anggota.ajaxanggota')->with([
+                'datasend' => $results
+            ]);
+        }
     }
 }

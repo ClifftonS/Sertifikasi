@@ -32,3 +32,6 @@ Route::post('/editanggota', [AnggotaController::class, 'edit']);
 Route::post('/addbuku', [BukuController::class, 'add']);
 Route::post('/deletebuku', [BukuController::class, 'delete']);
 Route::post('/editbuku', [BukuController::class, 'edit']);
+Route::get('/ajaxbuku', [BukuController::class, 'ajax']);
+Route::get('/ajaxagt', [AnggotaController::class, 'ajax']);
+Route::get('/ajaxpmnj', [PeminjamanController::class, 'ajax']);

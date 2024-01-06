@@ -18,12 +18,12 @@
                         </div>
                     </div>
                     <div class="mt-2"></div>
-                    <div class="row g-1 d-flex justify-content-center margin-row">
+                    {{-- <div class="row g-1 d-flex justify-content-center margin-row">
                         <div class="col-4">
                             <label for="anggota" class="col-form-label">Nama Peminjam</label>
                         </div>
                         <div class="col-7">
-                            <select class="form-select anggota" name="anggota" id="anggota"
+                            <select class="form-select inputbox anggota" name="anggota" id="anggota"
                                 aria-label="Default select example" required>
                                 @if (count($anggota) == 0)
                                     <option>Tidak ada mahasiswa</option>
@@ -40,7 +40,7 @@
                             <label for="buku" class="col-form-label">Nama Buku</label>
                         </div>
                         <div class="col-7">
-                            <select class="form-select buku" name="buku" id="buku"
+                            <select class="form-select inputbox buku" name="buku" id="buku"
                                 aria-label="Default select example" required>
                                 @if (count($buku) == 0)
                                     <option>Tidak ada mahasiswa</option>
@@ -62,7 +62,7 @@
                                 required>
                         </div>
                     </div>
-                    <div class="mt-2"></div>
+                    <div class="mt-2"></div> --}}
                     <div class="row g-1 d-flex justify-content-center margin-row">
                         <div class="col-4">
                             <label for="status" class="col-form-label">Status</label>
@@ -95,15 +95,18 @@
 <script type="text/javascript">
     $('#Editpeminjaman').on('show.bs.modal', function(e) {
         var idpmnj = $(e.relatedTarget).data('id').idpmnj;
-        var tglpmnj = $(e.relatedTarget).data('id').tglpmnj;
+        // var tglpmnj = $(e.relatedTarget).data('id').tglpmnj;
         var status = $(e.relatedTarget).data('id').status;
-        var idbuku = $(e.relatedTarget).data('id').idbuku;
-        var idagt = $(e.relatedTarget).data('id').idagt;
+        // var idbuku = $(e.relatedTarget).data('id').idbuku;
+        // var idagt = $(e.relatedTarget).data('id').idagt;
         $(e.currentTarget).find('input[id="idpmnj"]').val(idpmnj);
-        $(e.currentTarget).find('input[id="tglpmnj"]').val(tglpmnj);
+        // $(e.currentTarget).find('input[id="tglpmnj"]').val(tglpmnj);
         $(e.currentTarget).find('input[id="status"]').val(status);
         $("#status option[value='" + status + "']").attr('selected', true);
-        $("#anggota option[value='" + idagt + "']").attr('selected', true);
-        $("#buku option[value='" + idbuku + "']").attr('selected', true);
+        // $("#anggota option[value='" + idagt + "']").attr('selected', true);
+        // $("#buku option[value='" + idbuku + "']").attr('selected', true);
+        if (status == 1) {
+            $("#status option[value='" + 0 + "']").attr('disabled', true);
+        }
     });
 </script>
